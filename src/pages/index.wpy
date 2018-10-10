@@ -1,0 +1,32 @@
+<style lang="scss">
+.container {
+}
+</style>
+<template>
+  <view class="container">
+
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '我的主页'
+  }
+  components = {}
+
+  mixins = []
+
+  data = {}
+
+  computed = {}
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {}
+}
+</script>
