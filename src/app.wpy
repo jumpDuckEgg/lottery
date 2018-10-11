@@ -21,16 +21,53 @@ setStore(store)
 
 export default class extends wepy.app {
   config = {
-    pages: ['pages/index'],
+    pages: ['tabbar/index', 'tabbar/type', 'tabbar/set', 'tabbar/my'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#118cff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    subPackages: [
+      {
+        root: 'pages/',
+        pages: ['index']
+      }
+    ],
+    tabBar: {
+      color: '#bfbfbf',
+      selectedColor: '#118cff',
+      borderStyle: '#999',
+      backgroundColor: '#fff',
+      list: [
+        {
+          text: '主页',
+          pagePath: 'tabbar/index',
+          iconPath: '/asset/img/tabbar/action.png',
+          selectedIconPath: '/asset/img/tabbar/action-active.png'
+        },
+        {
+          text: '类别',
+          pagePath: 'tabbar/type',
+          iconPath: '/asset/img/tabbar/all.png',
+          selectedIconPath: '/asset/img/tabbar/all-active.png'
+        },
+        {
+          text: '设置',
+          pagePath: 'tabbar/set',
+          iconPath: '/asset/img/tabbar/set.png',
+          selectedIconPath: '/asset/img/tabbar/set-active.png'
+        },
+        {
+          text: '我的',
+          pagePath: 'tabbar/my',
+          iconPath: '/asset/img/tabbar/my.png',
+          selectedIconPath: '/asset/img/tabbar/my-active.png'
+        }
+      ]
     }
   }
-
-  globalData = {};
+  globalData = {}
 
   constructor() {
     super()
