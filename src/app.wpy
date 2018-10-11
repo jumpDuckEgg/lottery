@@ -1,11 +1,9 @@
-<style lang="less">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+<style lang="scss">
+@import "scss/app";
+@import "scss/base/iconfont";
+page {
+    font-family: PingFang-SC-Regular, "Helvetica Neue", Helvetica,
+        "microsoft yahei", sans-serif;
 }
 </style>
 

@@ -1,0 +1,174 @@
+@charset "UTF-8";
+@import "function";
+// Clearfix
+// -----------------------------------------------------------------------------
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+// Sizing
+// -----------------------------------------------------------------------------
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+// Shape
+// -----------------------------------------------------------------------------
+/// CSS Triangle
+/// Creates a CSS triangle, which can be used for dropdown arrows, popup tails, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+///
+/// @param {number} $triangle-size - Width of the triangle.
+/// @param {color} $triangle-color - Color of the triangle.
+/// @param {keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset $triangle-size;
+    @if ($triangle-direction==top) {
+        border-color: $triangle-color transparent transparent;
+        border-top-style: solid;
+    }
+    @if ($triangle-direction==bottom) {
+        border-color: transparent transparent $triangle-color;
+        border-bottom-style: solid;
+    }
+    @if ($triangle-direction==left) {
+        border-color: transparent transparent transparent $triangle-color;
+        border-left-style: solid;
+    }
+    @if ($triangle-direction==right) {
+        border-color: transparent $triangle-color transparent transparent;
+        border-right-style: solid;
+    }
+}
+
+// Retina borders
+// @see https://gist.github.com/w0rm/c0dd4b7aed71acc03900
+// @see http://dieulot.net/css-retina-hairline
+// -----------------------------------------------------------------------------
+@mixin retina-border ($color: #edf5f4, $radius: 0, $style: solid) {
+    position: relative;
+    &::before {
+        content: "";
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 1px $style $color;
+        box-sizing: border-box;
+        pointer-events: none;
+        border-radius: $radius;
+    } // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &::before {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: 0 0;
+            border-radius: ($radius*2);
+        }
+    }
+}
+
+@mixin retina-border-top($color: #edf5f4) {
+    position: relative;
+    &::before {
+        content: "";
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+    } // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &::before {
+            transform: scaleY(0.5);
+            transform-origin: 50% 0;
+        }
+    }
+}
+
+@mixin retina-border-bottom($color: #e6f0ee) {
+    position: relative;
+    &::after {
+        content: "";
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $color;
+        backface-visibility: hidden;
+    } // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &::after {
+            transform: scaleY(0.5);
+            transform-origin: 50% 100%;
+        }
+    }
+}
+
+@mixin retina-border-type($color:#edf5f4, $type: left, $class: after) {
+    position: relative;
+    &:#{$class} {
+        width: 1px;
+        height: 100%;
+        content: "";
+        position: absolute;
+        top: 0;
+        @if ($type=='left') {
+            left: 0;
+        }
+        @if ($type=='right') {
+            right: 0;
+        }
+        display: block;
+        background-color: $color;
+        backface-visibility: hidden;
+    } // simulate a 1px border on retina screens
+    @media (-webkit-min-device-pixel-ratio: 2) {
+        &:#{$class} {
+            transform: scaleX(0.5);
+        }
+    }
+}
+
+// 两行显示，溢出...
+@mixin twoLine {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+// 一行显示，溢出...
+@mixin oneLine {
+    overflow: hidden;
+    word-break: keep-all;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 字体
+@mixin font($size,$color,$weight:normal,$line-height:inherit) {
+	font-size: $size;
+	color: $color;
+	font-weight: $weight;
+	line-height: $line-height;
+}
