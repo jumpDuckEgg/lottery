@@ -1,10 +1,55 @@
 <style lang="scss">
 .container {
+  width: 100vw;
+  min-height: 100vh;
+}
+.typeBox{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  &-item{
+    border:1px solid #dfdfdf;
+    width: 33.3vw;
+    height: 33.3vh;
+    text-align: center;
+    &-img{
+      width: 50rpx;
+    }
+  }
 }
 </style>
 <template>
   <view class="container">
+    <view class="typeBox">
+      <view class="typeBox-item">
+        <image class="typeBox-item-img" src=""></image>
+      </view>
+      <view class="typeBox-item">
 
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+      <view class="typeBox-item">
+
+      </view>
+    </view>
   </view>
 </template>
 
