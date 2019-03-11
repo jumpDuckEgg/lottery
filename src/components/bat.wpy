@@ -1,0 +1,22 @@
+<template>
+
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class bat extends wepy.component {
+  props = {};
+
+  computed = {};
+
+  methods = {
+  };
+
+  onLoad() {}
+}
+</script>
+
+<style lang="scss">
+    @import 'app';
+</style>

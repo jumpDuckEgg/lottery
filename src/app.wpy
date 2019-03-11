@@ -1,6 +1,5 @@
 <style lang="scss">
-@import "scss/app";
-@import "scss/base/iconfont";
+@import 'app';
 page {
     font-family: PingFang-SC-Regular, "Helvetica Neue", Helvetica,
         "microsoft yahei", sans-serif;
@@ -73,18 +72,14 @@ export default class extends wepy.app {
   }
 
   onLaunch() {}
-
-  getUserInfo(cb) {
-    const that = this
-    if (this.globalData.userInfo) {
-      return this.globalData.userInfo
+  preventLink(that, url, parms = {}) {
+    let time = Date.now();
+    if (time - this.globalData.urlTime < 1000) {
+      return false;
+    } else {
+      this.globalData.urlTime = time;
+      that.$navigate(url, parms);
     }
-    wepy.getUserInfo({
-      success(res) {
-        that.globalData.userInfo = res.userInfo
-        cb && cb(res.userInfo)
-      }
-    })
   }
 }
 </script>

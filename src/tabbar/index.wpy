@@ -1,7 +1,43 @@
+<template>
+  <view class="container">
+    <view class="introBox">
+      <image class="introBox-img" src="/asset/img/index/game-pad.png"></image>
+      <view class="introBox-title">抽奖游戏集合</view>
+      <view class="introBox-content">
+        集合市面上常用的一些抽奖活动方式，便利每次活动构建，自主更换游戏背景、游戏方式；实现页面推销以及页面构建的功能；可单独拆分，形成一个独立的分包
+      </view>
+      <button class="introBox-btn">开始制作</button>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: '抽奖主页'
+  }
+  components = {}
+
+  mixins = []
+
+  data = {}
+
+  computed = {}
+
+  methods = {}
+
+  events = {}
+
+  onLoad() {}
+}
+</script>
 <style lang="scss">
+@import 'app';
 .container {
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: 100%;
 }
 .introBox {
   width: 84%;
@@ -43,38 +79,3 @@
   }
 }
 </style>
-<template>
-  <view class="container">
-    <view class="introBox">
-      <image class="introBox-img" src="/asset/img/index/game-pad.png"></image>
-      <view class="introBox-title">抽奖游戏集合</view>
-      <view class="introBox-content">
-        集合市面上常用的一些抽奖活动方式，便利每次活动构建，自主更换游戏背景、游戏方式；实现页面推销以及页面构建的功能；可单独拆分，形成一个独立的分包
-      </view>
-      <button class="introBox-btn">开始制作</button>
-    </view>
-  </view>
-</template>
-
-<script>
-import wepy from 'wepy'
-
-export default class Index extends wepy.page {
-  config = {
-    navigationBarTitleText: '抽奖主页'
-  }
-  components = {}
-
-  mixins = []
-
-  data = {}
-
-  computed = {}
-
-  methods = {}
-
-  events = {}
-
-  onLoad() {}
-}
-</script>

@@ -3,7 +3,7 @@ var prod = process.env.NODE_ENV === 'production';
 
 module.exports = {
   wpyExt: '.wpy',
-  eslint: true,
+  eslint: false,
   cliLogs: !prod,
   build: {
     web: {
@@ -14,8 +14,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      counter: path.join(__dirname, 'src/components/counter'),
-      '@': path.join(__dirname, 'src')
+      '@': path.join(__dirname, 'src'),
+      '@js': path.join(__dirname, 'src/js')
     },
     aliasFields: ['wepy', 'weapp'],
     modules: ['node_modules']
@@ -25,7 +25,8 @@ module.exports = {
       compress: prod
     },
     sass: {
-      outputStyle: 'compressed'
+      outputStyle: 'compressed',
+      includePaths:[ path.join(__dirname, 'src/scss') ]   //wepy的配置暂时无法支持像~的转换
     },
     babel: {
       sourceMap: true,
@@ -56,7 +57,7 @@ module.exports = {
 if (prod) {
 
   // 压缩sass
-  // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
+  module.exports.compilers['sass'] = {outputStyle: 'compressed',includePaths:[ path.join(__dirname, 'src/scss') ]}
 
   // 压缩js
   module.exports.plugins = {
